@@ -2,26 +2,60 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="styles.css">
     <title>Insurance Cost Prediction</title>
 </head>
 
 <body>
-    <h1>Insurance Cost Prediction</h1>
-    <form action="/predict" method="post">
-        <label for="age">Age:</label><br>
-        <input type="text" id="age" name="age"><br>
-        <label for="sex">Gender (0-Male, 1-Female):</label><br>
-        <input type="text" id="sex" name="sex"><br>
-        <label for="bmi">BMI:</label><br>
-        <input type="text" id="bmi" name="bmi"><br>
-        <label for="children">Number of Children:</label><br>
-        <input type="text" id="children" name="children"><br>
-        <label for="smoker">Smoker (0-Yes, 1-No):</label><br>
-        <input type="text" id="smoker" name="smoker"><br>
-        <label for="region">Region (0-Southeast, 1-Southwest, 2-Northeast, 3-Northwest):</label><br>
-        <input type="text" id="region" name="region"><br><br>
-        <input type="submit" value="Submit">
+    <div class="container">
+        <img src="background.jpg" alt="login image" class="container__img">
+        <form action="/predict" method="post" class="container__form">
+           <h1 class="container__title">Insurance Cost Prediction</h1>
+           <hr>
+
+           <div class="container__content">
+              <div class="container__box">
+
+                 <div class="container__box-input">
+                    <label for="Age" class="container__label">Age:</label>
+                    <input type="text" required class="container__input" id="container-age" name="age" placeholder=" ">
+                 </div>
+
+                 <div class="container__box-input">
+                    <label for="sex" class="container__label">Gender (0-Male, 1-Female):</label>
+                    <input type="text" required class="container__input" id="container-sex" name="sex" placeholder=" ">
+                 </div>
+
+                 <div class="container__box-input">
+                    <label for="BMI" class="container__label">BMI:</label>
+                    <input type="text" required class="container__input" id="container-bmi" name="bmi" placeholder=" ">
+                 </div>
+
+                 <div class="container__box-input">
+                    <label for="children" class="container__label">Number of Children:</label>
+                    <input type="text" required class="container__input" id="container-children" name="children" placeholder=" ">
+                 </div>
+
+                 <div class="container__box-input">
+                    <label for="smoker" class="container__label">Smoker (0-Yes, 1-No):</label>
+                    <!-- <br><br><br><br> -->
+                    <input type="text" required class="container__input" id="container-smoker"name="smoker" placeholder=" ">
+                 </div>
+
+                 <div class="container__box-input">
+                    <label for="region" class="container__label">Region (0-Southeast, 1-Southwest, 2-Northeast, 3-Northwest):</label>
+                    <input type="text" required class="container__input" id="container-region" name="region" placeholder=" ">
+                 </div>
+              </div>
+           </div>
+            
+        <button type="submit" class="container__button">Submit</button>
     </form>
+    {% if show_result %}
+        <h2 class="predict">Predicted Insurance Cost: {{ prediction }}</h2>
+    {% endif %}
+    </div>
+    
 </body>
 
 </html>
