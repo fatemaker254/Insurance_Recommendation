@@ -48,8 +48,8 @@ def predict():
 
     prediction = regressor.predict(input_data_reshaped)
     inr = prediction[0]
-
-    return f"The insurance cost is (INR {inr:.2f})"
+    return render_template("index.html", prediction=inr, show_result=True)
+    # return f"The insurance cost is (INR {inr:.2f})"
 
 
 if __name__ == "__main__":
