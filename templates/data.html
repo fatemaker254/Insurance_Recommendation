@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}" />
-    <title>Insurance Cost Prediction</title>
+    <title>Data Form</title>
 </head>
 
 <body>
     <div class="container">
-        <form action="/predict" method="post" class="container__form">
-           <h1 class="container__title">Insurance Cost Prediction</h1>
+        <form action="/data" method="post" class="container__form">
+           <h1 class="container__title">Medical Insurance Data Entry</h1>
            <hr>
 
            <div class="container__content">
@@ -50,14 +53,10 @@
             
         <button type="submit" class="container__button">Submit</button>
     </form>
-    <form action="/data" method="get" class="container__form">
-      <button type="submit" class="container__button">Go to Data Page</button>
-    </form>
-    {% if show_result %}
-        <h2 class="predict">Predicted Insurance Cost: {{ prediction }}</h2>
+
+    {% if message %}
+    <p>{{ message }}</p>
     {% endif %}
-    </div>
-    
 </body>
 
 </html>

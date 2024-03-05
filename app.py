@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
+import os
 
 app = Flask(__name__)
 
@@ -50,6 +51,28 @@ def predict():
     inr = prediction[0]
     return render_template("index.html", prediction=inr, show_result=True)
     # return f"The insurance cost is (INR {inr:.2f})"
+
+
+@app.route("/data", methods=["GET", "POST"])
+def data():
+    if request.method == "POST":
+        new_data = {
+            "age": int(request.form["age"]),
+            "sex": int(request.form["sex"]),
+            "bmi": float(request.form["bmi"]),
+            "children": int(request.form["children"]),
+            "smoker": int(request.form["smoker"]),
+            "region": int(request.form["region"]),
+        }
+        new_df = pd.DataFrame(new_data, index=[0])
+        new_df.to_csv(
+            "new_data.csv",
+            mode="a",
+            index=False,
+            header=not os.path.exists("new_data.csv"),
+        )
+        return render_template("data.html", message="Data added successfully!")
+    return render_template("data.html", message=None)
 
 
 if __name__ == "__main__":
