@@ -63,6 +63,7 @@ def data():
             "children": int(request.form["children"]),
             "smoker": int(request.form["smoker"]),
             "region": int(request.form["region"]),
+            "Disease": str(request.form["Disease"]),
         }
         new_df = pd.DataFrame(new_data, index=[0])
         new_df.to_csv(
